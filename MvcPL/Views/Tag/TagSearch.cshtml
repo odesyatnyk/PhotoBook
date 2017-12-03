@@ -1,0 +1,6 @@
+﻿@model MvcPL.Models.Helpers.PagedList<MvcPL.Models.Photo.PhotoViewModel>
+@{
+    ViewBag.Title = "#" + Model.PageName.Substring(3);
+    <h2>Total records on #@Model.PageName.Substring(3): @Model.Count</h2>
+    Html.RenderPartial("ShowGallery", Model);
+}

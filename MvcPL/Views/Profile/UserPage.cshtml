@@ -1,0 +1,6 @@
+﻿@model MvcPL.Models.Helpers.UserPageModel
+@{
+    ViewBag.Title = "User Page";
+    Html.RenderPartial("UserProfile", Model.Profile);
+    Html.RenderPartial("ShowGallery", Model.Photos);
+}

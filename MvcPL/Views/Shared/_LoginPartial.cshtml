@@ -1,0 +1,33 @@
+﻿@using Microsoft.Web.Samples
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            @if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
+            {
+                <li>
+                    <a href='@Url.Action("UsersEdit", "Home")'>Edit users</a>
+                </li>
+            }
+            <li>
+                <a href='@Url.Action("Create", "Profile")' title="Add photo">Add photo</a>
+            </li>
+            <li>
+                <a href='@Url.Action("UserPage", "Profile", new {name = User.Identity.Name})' title="Profile">My profile</a>
+            </li>
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()" title="Log out">Log out</a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", null, new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink" })</li>
+    </ul>
+}

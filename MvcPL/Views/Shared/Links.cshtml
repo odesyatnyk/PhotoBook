@@ -1,0 +1,62 @@
+﻿@using MvcPL.Models.Helpers
+@model PagedList<MvcPL.Models.Photo.PhotoViewModel>
+    @foreach (var item in Model.Content)
+    {
+        <div class="col-lg-4 col-md-4 image-container">
+            <div class="image-updater" data-url="/photo/show" value="@item.Id">
+                <img class="loading-image center-block" src="~/Content/Images/loading.gif" />
+            </div>
+
+            <div class="image-info-container">
+                <div class="image-info-description">
+                    <p class="image-description">@item.Description</p>
+                    <p class="image-data">@item.CreatedOn.ToString("F")</p>
+
+                    @if (item.UserName != null)
+                    {
+                        <p class="image-author">
+                            Posted by <a href="@Url.Action("UserPage", "Profile", new {name = item.UserName})"> @item.UserName</a>
+                        </p>
+                    }
+                    @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    {
+                        <a href="@Url.Action("DeletePhoto", "Photo", new {name = item.UserName, photoId = item.Id})">
+                            @Sprite.Image("~/App_Sprites/trashCan.png", new { @class = "likes-count" })
+                        </a>
+                    }
+                </div>
+                <div>
+                    @{
+                        int tagCount = 0;
+                        foreach (var tag in item.Tags)
+                        {
+                            if (Model.PageName.StartsWith("Tag") && Model.PageName.Substring(3) == tag.Name)
+                            {
+                                <a class="btn btn-primary btn-xs" href="@Url.Action("TagSearch", "Tag", new {name = tag.Name})">@tag.Name</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-default btn-xs" href="@Url.Action("TagSearch", "Tag", new {name = tag.Name})">@tag.Name</a>
+                            }
+                            tagCount++;
+                            if (tagCount == 3)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    <div id=@item.Id.ToString()> @{Html.RenderPartial("Like", item); } </div>
+                </div>
+            </div>
+        </div>
+                        }
+    <div style="padding: 15px; text-align: center;">
+        @if (Model.Count > Model.CurrentPage * GalleryHelper.PageSize)
+        {
+            using (Ajax.BeginForm("LinksView", "Photo", new { page = ++Model.CurrentPage, pageName = Model.PageName },
+                new AjaxOptions { UpdateTargetId = "links", InsertionMode = InsertionMode.InsertAfter, OnSuccess = "execute" }))
+            {
+                <input type="submit" value="Show more" onclick="hideshow(this)" class="btn btn-default btn-circle" />
+            }
+        }
+    </div>

@@ -1,0 +1,30 @@
+﻿@model MvcPL.Models.Helpers.PagedList<MvcPL.Models.Photo.PhotoViewModel>
+    @{
+        ViewBag.Title = "Images";
+        if (Request.IsAuthenticated)
+        {
+            Html.RenderPartial("ShowGallery", Model);
+        }
+        else
+        {
+            <div id="my-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    @foreach (var item in Model.Content)
+                {
+                        <div class="item">
+                            <div class="image-updater" data-url="/photo/show" value="@item.Id">
+                                <img class="loading-image center-block" src="~/Content/Images/loading.gif" />
+                            </div>
+                            <div class="carousel-caption">
+                                <p>@item.Description</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <script>
+                    var items = document.getElementsByClassName('item');
+                    items[0].classList.add('active');
+                </script>
+            </div>
+        }
+    }

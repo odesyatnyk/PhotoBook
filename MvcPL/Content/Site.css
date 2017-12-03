@@ -1,0 +1,184 @@
+﻿/* Set padding to keep content from hitting the edges */
+body {
+    overflow-x: hidden;
+}
+
+.gallery-image {
+    padding: 15px 15px 0 15px;
+    width: 100%;
+}
+
+.loading-image {
+    width: 300px;
+    height: 300px;
+}
+
+.noscript-warning {
+    margin-top: 60px;
+    background-color: crimson;
+    color: whitesmoke;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+
+.btn-circle {
+    border-radius: 80px;
+    font-size: 20px;
+    height: 120px;
+    line-height: 1.42;
+    padding: 6px 0;
+    text-align: center;
+    width: 120px;
+}
+
+.circular {
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    height: 150px;
+    padding: 10px;
+    width: 150px;
+}
+
+.modal-body {
+    max-height: 500px;
+    min-height: 400px;
+}
+
+.gallery-image {
+    margin-bottom: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+.image-container {
+    margin-bottom: 20px;
+}
+
+.image-info-container {
+    padding: 0 15px;
+}
+
+.image-info-description {
+    width: 150px;
+    float: left;
+}
+
+.image-description {
+    font-family: 'Times New Roman';
+    font-weight: bold;
+}
+
+.image-data {
+    font-size: 10px;
+}
+
+.image-author {
+    font-size: 10px;
+    margin-top: -7px;
+}
+
+.trash-icon {
+    zoom: 50%;
+    padding-left: 5px;
+}
+
+.like-button-style {
+    margin-top: 5px;
+    float: left;
+}
+
+.likes-count {
+    padding-top: 15px;
+}
+
+/* styles for validation helpers */
+
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.input-group.search-box {
+    padding: 15px 15px 0 15px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width : 768px) {
+
+    body > div.container.body-content {
+        padding: 0;
+    }
+
+    .gallery-image {
+        padding: 0;
+    }
+
+    .image-container {
+        padding: 0;
+    }
+
+    #links-container {
+        padding: 0;
+    }
+
+    .circular {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .user-page-column{
+        text-align: center;
+    }
+    .navbar{
+        margin-bottom: 0;
+    }
+    .panel{
+        border: none;
+        
+    }
+    .navbar-form{
+        border: none;
+    }
+}
+.checkbox-container {
+    display: inline-block;
+    padding: 0;
+    margin: 0 0 -4px 10px;
+}
+
+@media (min-width: 768px) {
+    .navbar-right {
+        margin-right: 0;
+    }
+}
+
+input{
+    max-width: 300px;
+}
+form.form-horizontal {
+    padding: 15px;
+}

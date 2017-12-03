@@ -1,0 +1,71 @@
+﻿@using Microsoft.Web.Samples
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Your photo book!</title>
+    <link rel="shortcut icon" type="image/ico" href="~/Content/Images/logo.png" />
+
+    @Styles.Render("~/bundles/bootstrap_css")
+    @Styles.Render("~/bundles/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/blueimp")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
+
+    @Sprite.ImportStylesheet("~/App_Sprites/")
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top topnav" role="navigation" id="myTopnav">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("PhotoBook", "Index", "Photo", null, new { @class = "navbar-brand" })
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            @if (Request.IsAuthenticated)
+            {
+                <div class="col-sm-3 col-md-5 center-block">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text"
+                                   name="filter"
+                                   value="@ViewBag.filter"
+                                   class="form-control"
+                                   placeholder="Search"
+                                   required="" />
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Go</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            }
+            @Html.Partial("_LoginPartial")
+        </div><!-- /.navbar-collapse -->
+    </nav>
+
+    <noscript>
+        <h2 class="noscript-warning">Please, enable JavaScript in your web browser!</h2>
+    </noscript>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    <div class="footer">
+        <p class="text-center">
+            With contributions by <a href="https://github.com/odesyatnyk">odesyatnyk</a> - @DateTime.Now.Year
+        </p>
+    </div>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

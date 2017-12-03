@@ -1,0 +1,49 @@
+.avatar\.png
+{
+width:150px;
+height:150px;
+background-image:url(sprite0.png);
+background-position:0px 0px;
+}
+.photo\.png
+{
+width:32px;
+height:32px;
+background-image:url(sprite0.png);
+background-position:-151px 0px;
+}
+.quit\.png
+{
+width:32px;
+height:32px;
+background-image:url(sprite0.png);
+background-position:-184px 0px;
+}
+.sadcat\.png
+{
+width:350px;
+height:450px;
+background-image:url(sprite0.png);
+background-position:-217px 0px;
+}
+.trashCan\.png
+{
+width:32px;
+height:32px;
+background-image:url(sprite0.png);
+background-position:-568px 0px;
+}
+.user\.png
+{
+width:32px;
+height:32px;
+background-image:url(sprite0.png);
+background-position:-601px 0px;
+}
+.UserEdit\.png
+{
+width:32px;
+height:32px;
+background-image:url(sprite0.png);
+background-position:-634px 0px;
+}

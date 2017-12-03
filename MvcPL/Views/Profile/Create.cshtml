@@ -1,0 +1,48 @@
+﻿@model MvcPL.Models.Photo.CreatePhotoModel
+
+@{
+    ViewBag.Title = "Upload Images";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Upload Images</h2>
+<div class="well">
+    @using (Html.BeginForm("Create", "Profile", FormMethod.Post, new {enctype = "multipart/form-data"}))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Description, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control required" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Tags, new {@class = "control-label col-sm-3"})
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.Tags, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Tags)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Choose Image(s)", new {@class = "control-label col-sm-3"})
+                <div class="col-sm-5">
+                    <input type="file" name="files"
+                           multiple="multiple" accept=".jpg, .png, .gif"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-5 col-sm-offset-3">
+                    <input type="submit" value="Save" class="btn btn-primary"/>
+                    <div style="color: red">
+                        @ViewBag.error
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
